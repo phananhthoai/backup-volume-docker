@@ -3,7 +3,7 @@
 set -e
 
 STACK=${1?'Stack required !'}
-MOUNT=${2?'Moutn required !'}
+MOUNT=${2?'Mount required !'}
 
 if [ $(docker service ls --filter label=com.docker.stack.namespace=${STACK} --format '{{ .Name }}' | grep -E 'redis|db' > /dev/null && echo $?) == 0  ]; then
 	for service in $(docker service ls --filter label=com.docker.stack.namespace=${STACK} --format '{{ .Name }}' | grep -E 'redis|db'); do
